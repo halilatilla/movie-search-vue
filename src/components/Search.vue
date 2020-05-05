@@ -5,6 +5,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      movie: ""
+    };
+  },
   methods: {
     getMovies() {
       this.$store.dispatch({ type: "getMovies", amount: this.movie });

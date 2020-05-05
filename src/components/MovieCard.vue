@@ -1,9 +1,10 @@
 <template lang='pug'>
+
   .card(v-if='getMovies')
     img(:src='getMovies.Poster')
     .information
       .title {{ getMovies.Title }}
-      div {{ getMovies.imdbRating }}
+      RatingCircle(:rating='getMovies.imdbRating')
       div {{ getMovies.Year }}
       div {{ getMovies.Genre }}
       div {{ getMovies.Country }}
@@ -12,7 +13,11 @@
 </template>
 
 <script>
+import RatingCircle from "./RatingCircle";
 export default {
+  components: {
+    RatingCircle
+  },
   computed: {
     getMovies() {
       return this.$store.state.movies;
@@ -27,8 +32,12 @@ export default {
   max-width: 900px;
   border-radius: 5px;
   overflow: hidden;
+  background-color: rgb(235, 235, 235);
+  img {
+    border-right: 1px dotted;
+    padding-right: 1rem;
+  }
   .information {
-    background-color: rgb(235, 235, 235);
     padding: 2rem;
     .title {
       font-size: 2rem;

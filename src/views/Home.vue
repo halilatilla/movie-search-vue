@@ -7,10 +7,17 @@
 <script>
 import Search from "../components/Search";
 import MovieCard from "../components/MovieCard";
+import RatingCircle from "../components/RatingCircle";
 export default {
+  data() {
+    return {
+      num: "100"
+    };
+  },
   components: {
     Search,
-    MovieCard
+    MovieCard,
+    RatingCircle
   }
 };
 </script>
