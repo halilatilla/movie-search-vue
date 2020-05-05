@@ -19,7 +19,6 @@ export default new Vuex.Store({
       const result = await axios.get(url);
       if (result.data.Error) return;
       commit("setMovies", result.data);
-      console.log(result.data);
     },
   },
   modules: {},

@@ -17,6 +17,9 @@ export default {
 
 <style scoped lang='scss'>
 .home {
-  background-color: thistle;
+  margin-top: 2rem;
+  display: grid;
+  justify-items: center;
+  gap: 3rem;
 }
 </style>

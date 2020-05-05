@@ -1,9 +1,9 @@
 <template lang='pug'>
   nav.header
     .items
-        a.item logo
-        a.item Header
-        a.item navigate
+        a.item MyMovies
+        a.item Find A Movie
+        a.item Favorites
 </template>
 
 <script>
@@ -12,14 +12,14 @@ export default {};
 
 <style scoped lang="scss">
 .header {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   background-color: teal;
   .items {
-    background-color: yellow;
     display: flex;
     justify-content: space-between;
-    margin: 0;
+    margin: 0 auto;
+    max-width: 1180px;
     .item {
       text-decoration: none;
       list-style: none;
