@@ -2,7 +2,7 @@
   nav.header
     .items
         a.item logo
-        a.item title
+        a.item Header
         a.item navigate
 </template>
 

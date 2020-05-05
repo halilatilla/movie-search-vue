@@ -1,7 +1,7 @@
 <template lang='pug'>
   #app
     Header
-    nav test
+    router-view  
     Footer
 </template>
 

@@ -2,7 +2,7 @@
   .footer
     .items
         a.item logo
-        a.item title
+        a.item Footer
         a.item navigate
 </template>
 
