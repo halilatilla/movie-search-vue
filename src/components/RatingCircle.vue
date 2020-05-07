@@ -31,6 +31,8 @@ export default {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    color: teal;
+    font-weight: bold;
   }
 }
 .round {
@@ -38,7 +40,7 @@ export default {
   transition: all 1s ease-in-out;
 
   /* SVG */
-  fill: none;
+  fill: white;
   stroke: red;
   stroke-width: 5;
   stroke-linecap: round;

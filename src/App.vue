@@ -23,10 +23,13 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(45, 46, 45);
-  color: #2c3e50;
-  //max-width: 1180px;
+  color: $base-color;
   margin: 0 auto;
   position: relative;
-  height: 100vh;
+  height: calc(100vh - 50px);
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
 </style>
