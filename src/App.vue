@@ -2,7 +2,6 @@
   #app
     Header
     router-view  
-    //Footer
 </template>
 
 <script>

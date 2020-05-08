@@ -1,7 +1,7 @@
 <template lang='pug'>
   .home
     Search
-    MovieCard
+    MovieCard(:getMovie='getMovie')
 </template>
 
 <script>
@@ -13,6 +13,11 @@ export default {
     Search,
     MovieCard,
     RatingCircle
+  },
+  computed: {
+    getMovie() {
+      return this.$store.state.movie;
+    }
   }
 };
 </script>
@@ -22,9 +27,11 @@ export default {
   padding-top: 2rem;
   display: grid;
   justify-items: center;
+  justify-content: center;
   grid-template-rows: repeat(2, max-content);
+  grid-template-columns: 800px;
+  margin: 0 auto;
   gap: 3rem;
-  //background: url("../assets/movie-bg.jpg") no-repeat center center fixed;
   height: calc(100% - 40px);
   background-image: linear-gradient(
       to bottom,

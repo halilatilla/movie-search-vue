@@ -1,27 +1,47 @@
 <template lang='pug'>
 
-  .card(v-if='getMovies')
-    img(:src='getMovies.Poster')
+  .card(v-if='getMovie')
+    img(:src='getMovie.Poster' v-if='getMovie.Poster !== "N/A"')
     .information
-      .title {{ getMovies.Title }}
+      .title {{ getMovie.Title }}
       div.description
-        div {{ getMovies.Year }}
-        //div {{ getMovies.Type }}
-        div {{ getMovies.Genre }}
-        div {{ getMovies.Country }}
-      RatingCircle(:rating='getMovies.imdbRating')
-      .pilot {{ getMovies.Plot }}
+        div {{ getMovie.Year }}
+        div {{ getMovie.Genre }}
+        div {{ getMovie.Country }}
+      RatingCircle(:rating='getMovie.imdbRating' )
+      button(@click='setFavMovie' v-model='setFavMovie'  :class='isFav') add fav
+      .pilot {{ getMovie.Plot }}
 </template>
 
 <script>
 import RatingCircle from "./RatingCircle";
 export default {
+  props: ["getMovie"],
   components: {
     RatingCircle
   },
+  methods: {
+    setFavMovie() {
+      let favMovies = localStorage.getItem("favorites")
+        ? JSON.parse(localStorage.getItem("favorites"))
+        : [];
+
+      if (favMovies.some(el => el.imdbID === this.getMovie.imdbID)) {
+        const newMovies = favMovies.filter(mov => {
+          return mov.imdbID !== this.getMovie.imdbID;
+        });
+        favMovies = newMovies;
+        this.$store.commit("isFav", false);
+      } else {
+        favMovies = [...favMovies, this.getMovie];
+        this.$store.commit("isFav", true);
+      }
+      localStorage.setItem("favorites", JSON.stringify(favMovies));
+    }
+  },
   computed: {
-    getMovies() {
-      return this.$store.state.movies;
+    isFav() {
+      return this.$store.state.isFav ? "is-fav" : null;
     }
   }
 };
@@ -30,7 +50,6 @@ export default {
 <style scoped lang='scss'>
 .card {
   display: flex;
-  max-width: 800px;
   height: max-content;
   border-radius: $border-radius;
   overflow: hidden;
@@ -56,22 +75,18 @@ export default {
       font-size: 14px;
       div {
         margin-right: 12px;
-        //border: 1px solid;
         padding: 9px;
         border-radius: $border-radius;
-        //background-color: rgb(77, 117, 250);
-        //color: #2c3e50;
       }
     }
+
     .pilot {
-      //background-color: antiquewhite;
-      //padding: 18px;
-      //color: #2c3e50;
-      //border-radius: 5px;
-      //width: 80%;
       line-height: 22px;
       margin-top: 12px;
     }
+  }
+  .is-fav {
+    background-color: red;
   }
 }
 </style>

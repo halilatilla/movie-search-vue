@@ -6,11 +6,15 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    movies: null,
+    movie: null,
+    isFav: false,
   },
   mutations: {
-    setMovies(state, result) {
-      state.movies = result;
+    setMovies(state, movie) {
+      state.movie = movie;
+    },
+    isFav(state, isFav) {
+      state.isFav = isFav;
     },
   },
   actions: {
